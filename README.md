@@ -9,5 +9,13 @@ Just copy this script in your website
 
 	http://example.com/disk-space.php
 
+# How it works
+
+Using this functions:
+
+http://php.net/manual/es/function.disk-free-space.php
+
+http://php.net/manual/es/function.disk-total-space.php
 
 # Screenshot
+
