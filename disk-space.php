@@ -1,5 +1,6 @@
 <?php
 //credit to: http://www.thecave.info/display-disk-free-space-percentage-in-php/
+//mostrar así: <iframe width="100%" height="200" src="http://formato7.com/disk-space.php"></iframe>
 /* get disk space free (in bytes) */
 $df = disk_free_space(__FILE__);
 /* and get disk space total (in bytes)  */
@@ -28,7 +29,7 @@ function formatSize($bytes)
     .progress {
             border: 2px solid #5E96E4;
             height: 32px;
-            width: 540px;
+            width: 350px;
             margin: 30px auto;
     }
     .progress .prgbar {
@@ -43,7 +44,7 @@ function formatSize($bytes)
             text-align: center;
             font-size: 13px;
             padding: 9px 0 0;
-            width: 540px;
+            width: 350px;
             position: absolute;
             z-index: 1000;
     }
@@ -51,20 +52,23 @@ function formatSize($bytes)
             margin: 3px 0;
     }
 
+    .progress .prgbar-danger{background: red;}
+    .progress .prgtext-danger {color: #FCFCFC;}
+
     </style>
-    <title>Disk Space</title>
+    <title>Espacio en Disco</title>
   </head>
   <body>  
-  <h1 style="text-align:center">Disk Space</h1>
+  <h1 style="text-align:center">Espacio en Disco</h1>
+  <p style="text-align:center">Total: <?=$dt?></p>
         <div class='progress'>
-            <div class='prgtext'><?php echo $dp; ?>% Disk Used</div>
-            <div class='prgbar'></div>
+            <div class='prgtext <?php if($dp>90)echo "prgtext-danger"?>'><?php echo $dp; ?>% Usado</div>
+            <div class='prgbar <?php if($dp>90)echo "prgbar-danger"?>'></div>
             <div class='prginfo'>
-                    <span style='float: left;'><?php echo "$du of $dt used"; ?></span>
-                    <span style='float: right;'><?php echo "$df of $dt free"; ?></span>
+                    <span style='float: left;'><?php echo "$du usado"; ?></span>
+                    <span style='float: right;'><?php echo "$df libre"; ?></span>
                     <span style='clear: both;'></span>
             </div>
     </div>
   </body>
 </html>
-
